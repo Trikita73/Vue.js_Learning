@@ -1,3 +1,7 @@
+// Переменные и обработка данных
+
+<!--
+
 // css
 <style scoped>
 h3 {
@@ -41,3 +45,37 @@ export default {
   <button type="button" v-on:click="userClick ('New text')">Кликни2</button>
 </template>
 
+-->
+
+// работа с пользователями
+
+// css
+<style scoped>
+
+</style>
+
+// Java Script
+<script>
+export default {
+  data() {
+    return {
+      userName: '',
+      userPass: '',
+      userEmail: ''
+    }
+  },
+  methods: {
+    insertData(val) {
+      this.userName = val
+    }
+  }
+}
+</script>
+
+// HTML
+<template>
+  <input type="text" @input="insertData($event.target.value)" placeholder="Имя">
+  <input type="password" placeholder="Пароль">
+  <input type="email" placeholder="Email">
+  <p> {{ userName }}</p>
+</template>
