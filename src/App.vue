@@ -135,6 +135,8 @@ export default {
 
 // компоненты
 
+<!--
+
 // css
 <style scoped>
 input {
@@ -236,3 +238,39 @@ export default {
 
   <User v-for="(el, index) in users" :key="index" :user="el" :index='index' :deleteUser="deleteUser" />
 </template>
+
+-->
+
+
+// Работа с API
+
+<template>
+  <div class="wrapper">
+    <h1>Погодное приложение</h1>
+    <p>Узнать погоду в вашем городе</p>
+  </div>
+</template>
+
+<script>
+
+</script>
+
+<style scoped>
+  .wrapper {
+    width: 900px;
+    height: 500px;
+    border-radius: 50px;
+    padding: 20px;
+    background: #3d3939;
+    text-align: center;
+    color: #fff;
+  }
+
+  .wrapper h1 {
+    margin-top: 50px;
+  }
+
+  .wrapper p {
+    margin-top: 20px;
+  }
+</style>
