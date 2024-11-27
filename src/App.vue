@@ -242,7 +242,7 @@ export default {
 -->
 
 
-// Работа с API
+// Работа с API (погода)
 
 <template>
   <div class="wrapper">
@@ -252,6 +252,14 @@ export default {
     <button v-if="city != ''" @click="getWeather()">Получить результат</button>
     <button disabled v-else>Введите название города</button>
     <p class="error">{{ error }}</p>
+
+    <div v-if="info != null">
+      <p>{{ showTemp }}</p>
+      <p>{{ showFeelsLike }}</p>
+      <p>{{ showMinTemp }}</p>
+      <p>{{ showMaxtemp }}</p>
+    </div>
+    
   </div>
 </template>
 
@@ -262,13 +270,26 @@ export default {
   data() {
     return {
       city: "",
-      error: ""
+      error: "",
+      info: null
     }
   },
   computed: {
     cityName() {
-      return "<<" + this.city + ">"
-    }
+      return "<<" + this.city + ">>"
+    },
+    showTemp() {
+      return "Температура: " + this.info.main.temp
+    },
+    showFeelsLike() {
+      return "Ощущается как: " + this.info.main.feels_like
+    },
+    showMinTemp() {
+      return "Минимальная темпаратура: " + this.info.main.temp_min
+    },
+    showMaxtemp() {
+      return "Максимальная темпаратура: " + this.info.main.temp_max
+    },
   },
   methods: {
     getWeather() {
@@ -278,7 +299,8 @@ export default {
       }
       this.error = ""
 
-      axios.get('')
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=faf41b26cfaf8099c62cb0a39b3005ef`)
+        .then(res => (this.info = res.data))
     }
   }
 }
