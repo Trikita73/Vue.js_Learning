@@ -376,10 +376,11 @@ export default {
 <template>
   <h1>Crypto</h1>
   <Input :changeAmount="changeAmount"/>
-  {{  amount }}
+  {{  cryptoFirst }}
+  {{  cryptoSecond }}
   <div className="selectors">
-    <Selector />
-    <Selector />
+    <Selector :setCrypto = "setCryptoFirst" />
+    <Selector :setCrypto = "setCryptoSecond" />
   </div>
 </template>
 
@@ -391,13 +392,22 @@ export default {
   components: { Input, Selector },
   data () {
     return {
-      amount: 0
+      amount: 0,
+      cryptoFirst: '',
+      cryproSecond: ''
     }
   },
   methods: {
     changeAmount(val) {
       this.amount = val
+    },
+    setCryptoFirst(val) {
+      this.cryptoFirst = val
+    },
+    setCryptoSecond(val) {
+      this.cryptoSecond = val
     }
+
   }
 }
 </script>
