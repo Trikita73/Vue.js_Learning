@@ -375,7 +375,8 @@ export default {
 
 <template>
   <h1>Crypto</h1>
-  <Input />
+  <Input :changeAmount="changeAmount"/>
+  {{  amount }}
   <div className="selectors">
     <Selector />
     <Selector />
@@ -387,7 +388,17 @@ import Input from './components/Input.vue'
 import Selector from './components/Selector.vue'
 
 export default {
-  components: { Input, Selector }
+  components: { Input, Selector },
+  data () {
+    return {
+      amount: 0
+    }
+  },
+  methods: {
+    changeAmount(val) {
+      this.amount = val
+    }
+  }
 }
 </script>
 
