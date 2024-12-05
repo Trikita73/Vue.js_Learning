@@ -1,5 +1,6 @@
 <template>
-    <input type="number" @input="changeAmount($event.target.value)" placeholder="Введите число">
+    <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Введите число "><br>
+    <button className="button_current">Конвертировать</button>
   </template>
   
   <script>
@@ -21,10 +22,25 @@
     top: -20px;
     font-size: 1.2em;
     border-radius: 3px;
-    border: 0;
+    border: 4px solid #1a032d;
     padding: 10px 15px;
     background: #fafafa;
     color: #333
   }
+  .button_current {
+    top: -20px;
+    padding: 15px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #1a032d;
+    border: 0;
+    border-radius: 3px;
+  }
+  .button_current:hover, li.active {
+        background: #24043e;
+        cursor: pointer;
+    }
+
   </style>
   
