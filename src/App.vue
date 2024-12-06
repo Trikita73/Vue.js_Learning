@@ -375,8 +375,8 @@ export default {
 
 <template>
   <h1>Crypto</h1>
-  <Input :changeAmount="changeAmount"/>
-
+  <Input :changeAmount="changeAmount" :convert="convert" />
+  <p v-if="error != ''">{{ error }}</p>
   <div className="selectors">
     <Selector :setCrypto = "setCryptoFirst" />
     <Selector :setCrypto = "setCryptoSecond" />
@@ -393,7 +393,8 @@ export default {
     return {
       amount: 0,
       cryptoFirst: '',
-      cryproSecond: ''
+      cryproSecond: '',
+      error: ''
     }
   },
   methods: {
@@ -407,9 +408,18 @@ export default {
       this.cryptoSecond = val
     },
     convert() {
-
+      if(this.amount <= 0) {
+        this.error == 'Введите число большее за ноль!';
+        return;
+      } else if(this.cryptoFirst == this.cryproSecond) {
+        this.error == 'Выберите другую валюту!';
+        return;
+      } else if(this.cryptoFirst == '' || this.cryproSecond == '') {
+        this.error == 'Выберите валюту';
+        return;
+      }
+      this.error ='';
     }
-
   }
 }
 </script>

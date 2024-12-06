@@ -1,6 +1,6 @@
 <template>
     <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Введите число "><br>
-    <button className="button_current">Конвертировать</button>
+    <button className="button_current" @click="convert()">Конвертировать</button>
   </template>
   
   <script>
@@ -10,6 +10,10 @@
         type: Function,
         required: true
       }
+    },
+    convert: {
+      type: Function,
+      required: true
     }
   }
   </script>
