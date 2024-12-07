@@ -9,11 +9,11 @@
       changeAmount: {
         type: Function,
         required: true
+      },
+      convert: {
+        type: Function,
+        required: true
       }
-    },
-    convert: {
-      type: Function,
-      required: true
     }
   }
   </script>

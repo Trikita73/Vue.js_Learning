@@ -393,7 +393,7 @@ export default {
     return {
       amount: 0,
       cryptoFirst: '',
-      cryproSecond: '',
+      cryptoSecond: '',
       error: ''
     }
   },
@@ -411,10 +411,10 @@ export default {
       if(this.amount <= 0) {
         this.error == 'Введите число большее за ноль!';
         return;
-      } else if(this.cryptoFirst == this.cryproSecond) {
+      } else if(this.cryptoFirst == this.cryptoSecond) {
         this.error == 'Выберите другую валюту!';
         return;
-      } else if(this.cryptoFirst == '' || this.cryproSecond == '') {
+      } else if(this.cryptoFirst == '' || this.cryptoSecond == '') {
         this.error == 'Выберите валюту';
         return;
       }
