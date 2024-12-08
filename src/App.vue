@@ -376,8 +376,8 @@ export default {
 <template>
   <h1>Crypto</h1>
   <Input :changeAmount="changeAmount" :convert="convert" />
-  <p v-if="error != ''">{{ error }}</p>
-  <p v-if="result != 0"> {{ result }}</p>
+  <p className="error" v-if="error != ''">{{ error }}</p>
+  <p className="result" v-if="result != 0"> {{ result }}</p>
   <div className="selectors">
     <Selector :setCrypto = "setCryptoFirst" />
     <Selector :setCrypto = "setCryptoSecond" />
@@ -425,9 +425,22 @@ export default {
       } else {
         this.error ='';
       }
+      
       await convert.ready();
 
-      this.result = convert.BTC.USD(1);
+      if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'ETH') {
+        this.result = convert.BTC.ETH(this.amount);
+      } else if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'USDT') {
+          this.result = convert.BTC.USDT(this.amount);
+      } else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'BTC') {
+          this.result = convert.ETH.BTC(this.amount);
+      } else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'USDT') {
+          this.result = convert.ETH.USDT(this.amount);
+      } else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'BTC') {
+          this.result = convert.USDT.BTC(this.amount);
+      } else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'ETH') {
+          this.result = convert.USDT.ETH(this.amount);
+      }
     }
   }
 }
@@ -439,5 +452,17 @@ export default {
   justify-content: space-around;
   width: 700px;
   margin: 0 auto;
+}
+.error {
+  font-size: 20px;
+  font-weight: bold;
+  color: #332c5e;
+  font-family: 'Nabla', cursive;
+}
+.result {
+  font-size: 24px;
+  font-weight: bold;
+  color: #24043e;
+  font-family: 'Nabla', cursive;
 }
 </style>
