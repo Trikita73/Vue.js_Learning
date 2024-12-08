@@ -1,6 +1,7 @@
 <template>
     <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Введите число"><br>
     <button className="button_current" @click="convert()">Конвертировать</button>
+    <button className="button_favourite" @click="favourite()">В избранное</button>
   </template>
   
   <script>
@@ -11,6 +12,10 @@
         required: true
       },
       convert: {
+        type: Function,
+        required: true
+      },
+      favourite: {
         type: Function,
         required: true
       }
@@ -40,11 +45,33 @@
     background: #1a032d;
     border-radius: 3px;
     border: 3px solid #000;
+    transition: transform 500ms ease;
   }
   .button_current:hover, li.active {
-        background: #24043e;
-        cursor: pointer;
-    }
-
+    background: #24043e;
+    cursor: pointer;
+  }
+  .button_current:hover {
+    transform: scale(1.1);
+  }
+  .button_favourite {
+    margin-left: 20px;
+    top: -20px;
+    padding: 15px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #1a032d;
+    border-radius: 3px;
+    border: 3px solid #000;
+    transition: transform 500ms ease;
+  }
+  .button_favourite:hover, li.active {
+    background: #24043e;
+    cursor: pointer;
+  }
+  .button_favourite:hover {
+    transform: scale(1.1);
+  }
   </style>
   
