@@ -1,6 +1,6 @@
 <template>
     <h2>Варианты в избранном</h2>
-    <div className="favourite_items" v-for="(el, index) in favs" :key="index">
+    <div @click="getFromFavs(index)" className="favourite_items" v-for="(el, index) in favs" :key="index">
         <span> {{ el.from }}</span>
         <span> {{ el.to }}</span>
     </div>  
@@ -12,6 +12,10 @@ export default {
         favs: {
             type: Array,
             Required: true
+        },
+        getFromFavs: {
+            type: Function,
+            required: true
         }
     }
 } 
