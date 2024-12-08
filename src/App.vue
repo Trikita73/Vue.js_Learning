@@ -409,16 +409,18 @@ export default {
     },
     convert() {
       if(this.amount <= 0) {
-        this.error == 'Введите число большее за ноль!';
-        return;
-      } else if(this.cryptoFirst == this.cryptoSecond) {
-        this.error == 'Выберите другую валюту!';
+        this.error = 'Введите число большее за ноль!';
         return;
       } else if(this.cryptoFirst == '' || this.cryptoSecond == '') {
-        this.error == 'Выберите валюту';
+        this.error = 'Выберите валюту';
         return;
+      } else if(this.cryptoFirst == this.cryptoSecond) {
+        this.error = 'Выберите другую валюту!';
+        return;
+      } else {
+        this.error ='';
       }
-      this.error ='';
+  
     }
   }
 }

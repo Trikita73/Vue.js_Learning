@@ -1,5 +1,5 @@
 <template>
-    <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Введите число "><br>
+    <input min="0" type="number" @input="changeAmount($event.target.value)" placeholder="Введите число"><br>
     <button className="button_current" @click="convert()">Конвертировать</button>
   </template>
   
@@ -38,8 +38,8 @@
     text-transform: uppercase;
     cursor: pointer;
     background: #1a032d;
-    border: 0;
     border-radius: 3px;
+    border: 3px solid #000;
   }
   .button_current:hover, li.active {
         background: #24043e;
