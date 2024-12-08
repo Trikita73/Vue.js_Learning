@@ -377,6 +377,7 @@ export default {
   <h1>Crypto</h1>
   <Input :changeAmount="changeAmount" :convert="convert" />
   <p v-if="error != ''">{{ error }}</p>
+  <p v-if="result != 0"> {{ result }}</p>
   <div className="selectors">
     <Selector :setCrypto = "setCryptoFirst" />
     <Selector :setCrypto = "setCryptoSecond" />
@@ -386,6 +387,9 @@ export default {
 <script>
 import Input from './components/Input.vue'
 import Selector from './components/Selector.vue'
+import CryptoConvert from 'crypto-convert';
+
+const convert = new CryptoConvert();
 
 export default {
   components: { Input, Selector },
@@ -394,7 +398,8 @@ export default {
       amount: 0,
       cryptoFirst: '',
       cryptoSecond: '',
-      error: ''
+      error: '',
+      result: 0
     }
   },
   methods: {
@@ -407,7 +412,7 @@ export default {
     setCryptoSecond(val) {
       this.cryptoSecond = val
     },
-    convert() {
+    async convert() {
       if(this.amount <= 0) {
         this.error = 'Введите число большее за ноль!';
         return;
@@ -420,7 +425,9 @@ export default {
       } else {
         this.error ='';
       }
-  
+      await convert.ready();
+
+      this.result = convert.BTC.USD(1);
     }
   }
 }
